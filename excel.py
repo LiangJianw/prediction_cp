@@ -1,5 +1,6 @@
 import xlrd
 import xlwt
+from random import randint
 
 
 class OperationOnExcel(object):
@@ -39,10 +40,11 @@ class OperationOnExcel(object):
                     print("KeyError: {0}".format(index))
                     continue
 
-        table.save(r"D:/data/prediction_cp.xls")
+        table.save(r"./data/prediction_cp.xls")
 
 
 if __name__ == '__main__':
+
     a = {
         1: [1,2,3,4,5,6,7],
         2: [4,5,6,7,8,9,0],
@@ -50,5 +52,10 @@ if __name__ == '__main__':
         5: [3,4,4,5,6,7,8],
         12: [1,2,3,4,5,6,7]
     }
+    for j in range(1000):
+        temp = []
+        for i in range(7):
+            temp.append(randint(0, 40))
+        a[randint(1, 10000)] = temp
 
     OperationOnExcel().write_data_to_excel(a)
